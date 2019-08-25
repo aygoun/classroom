@@ -80,8 +80,11 @@ table{
     <div class="row"  style="width: 100%;">
       <div class="col-md-2"></div>
 
-      <div class="col-md-8" style="text-align: center; margin: auto; margin-left: 1.9em;">
-        <p style="font-weight: 600">Classe de 1ère <?= $classes ?> : <br>Nous vous conseillons d'actualisez la page dans plusieurs heures/jours et de partager le lien du site internet.</p>
+      <div class="col-md-8" style="text-align: justify;margin: auto; margin-left: 1.9em;">
+        <p style="font-weight: 600"><span style="margin-left:0em;text-decoration: underline;">Classe de 1ère <?= $classes ?> :</span>
+          <br>
+          <span style="">Nous vous conseillons d'actualiser la page dans plusieurs heures/jours et de partager le lien du site internet.</span></p>
+        <a href="register.php"><p>Voir les autres classes</p></a>
 
         <table class="table table-striped">
           <thead>
@@ -96,9 +99,9 @@ table{
             { //debut de la boucle while
               ?>
               <tr>
-                <td scope="row"><a href="instagram://user?username=<?= $donnees['instagram'] ?>"><img src="https://scontent-ort2-2.cdninstagram.com/vp/2d8dc1ad23b7d3a1a37c08e9ed89b8c8/5DAFE9C0/t51.2885-19/s150x150/57226669_664450173989925_797936131105619968_n.jpg?_nc_ht=scontent-ort2-2.cdninstagram.com" alt="photo de profil" id="profilPic"/>| <?= $donnees['instagram'];?></a></td>
-                <td><?= $donnees['lastname'];?></td>
-                <td><?= $donnees['firstname'];?></td>
+                <td style="max-width:5em;overflow: scroll;" scope="row"><a href="instagram://user?username=<?= $donnees['instagram']; ?>"><img src="<?= $donnees['url_profile_pic']; ?>" alt="photo de profil" id="profilPic"/><?= $donnees['instagram'];?></a></td>
+                <td style="max-width:5em;overflow: scroll;"><?= $donnees['lastname'];?></td>
+                <td style="max-width:5em;overflow: scroll;"><?= $donnees['firstname'];?></td>
               </tr>
               <?php
             }
