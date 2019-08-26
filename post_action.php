@@ -40,17 +40,24 @@ if(isset($_POST['valider'])){
   $instagram=htmlspecialchars($_POST['inputinstagram']);
   $class=$_POST['exampleFormControlSelect1'];
 
+  $result = $bdd->prepare('SELECT * FROM class_db_V2 WHERE instagram = ?');
+  $result->execute(array($instagram));
+  $donnees = $result->fetch();
 
-  $profile_pic = get_instagram_profile_pic($instagram);
-
-  $resultat = $bdd->prepare('INSERT INTO class_db_V2 (firstname, lastname, instagram, url_profile_pic, classe, current_datetime) VALUES (?,?,?,?,?,NOW() )');
-  $resultat->execute(array($firstname, $lastname, $instagram, $profile_pic, $class));
-
-  header("refresh:2;url=classes.php?w=$class");
-  echo "Votre requête a été enregsitré !";
+  if ($donnees['instagram'] == $instagram) {
+     header("refresh:0;url=classes.php?w=$class");
+     //echo "Vous êtes déjà enregsitré(e) !";
+   }
+   else{
+     $profile_pic = get_instagram_profile_pic($instagram);
+     $resultat = $bdd->prepare('INSERT INTO class_db_V2 (firstname, lastname, instagram, url_profile_pic, classe, current_datetime) VALUES (?,?,?,?,?,NOW() )');
+     $resultat->execute(array($firstname, $lastname, $instagram, $profile_pic, $class));
+     header("refresh:0;url=classes.php?w=$class");
+     //echo "Votre requête a été enregsitré !";
+   }
 }
 else {
-  header("refresh:2;url=register.php");
-  echo "La requête n'a pas été enregistré.";
+  header("refresh:0;url=register.php");
+  echo "Votre requête n'a pas fonctionnée !";
 }
 ?>
