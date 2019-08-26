@@ -82,7 +82,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-12 col-xs-12">
-                <input type="text" class="form-control" name="inputinstagram" placeholder="Pseudo Instagram" required="">
+                <input autocapitalize="off" type="text" class="form-control" name="inputinstagram" placeholder="Pseudo Instagram" required="">
                 <label class="label_insta">Nous utilisons seulement votre pseudo pour afficher votre photo de profil sur les listes.</label>
               </div>
             </div>
